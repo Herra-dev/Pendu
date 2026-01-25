@@ -2,11 +2,11 @@ package com.pendu;
 
 public class Pendu
 {
-    String hiddenWord;
-    String foundWord;
-    char characterEntry;
-
-    com.pendu.enumeration.Player player = com.pendu.enumeration.Player.ONE;
+    protected String hiddenWord;
+    protected String foundWord;
+    protected char characterEntry;
+    protected com.pendu.enumeration.Player player = com.pendu.enumeration.Player.ONE;
+    protected static java.nio.file.Path path = java.nio.file.Paths.get("../assets/files/France");
 
 /**
  * default contructor
@@ -73,6 +73,13 @@ public class Pendu
         return this.player;
     }
 
+//--------------------------------------------------------------------------
+
+    public java.nio.file.Path getPath()
+    {
+        return path;
+    }
+
 //==================================================================
 //=== SETTERS
 
@@ -122,8 +129,91 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+    public void setPath(java.nio.file.Path p_path)
+    {
+        path = p_path;
+    }
+
+//--------------------------------------------------------------------------
+//==== STATIC METHODS
+
+    public static int randomNumber()
+    {
+        java.util.Random rand = new java.util.Random();
+
+        //return a random number between 0 and (the number of word available in the file - 1)
+        return rand.nextInt(numberOfWords());
+    }
+
+//--------------------------------------------------------------------------
+
+    public static int numberOfWords()
+    {
+        // if the file in the URI path doesn't exists, return 0
+        if(!java.nio.file.Files.exists(path)) return 0; 
+
+        int number = 0;
+        
+        // to instatiate BufferedReader in the try close like this assure that the this object will be closed at end of the structure
+        try(java.io.BufferedReader br = java.nio.file.Files.newBufferedReader(path);)
+        {
+            //read all line one by one and increment number
+            while(!((br.readLine()) == null)) number++; 
+        }
+        catch(java.io.IOException e)
+        {
+            System.err.println("error: " + e.getMessage());
+        }
+
+        return number; // return the number of line read
+    }
+
+//--------------------------------------------------------------------------
+
+    @SuppressWarnings("empty-statement")
+    public static String pickWord()
+    {
+        if(!java.nio.file.Files.exists(path)) return "pendu"; 
+
+        String str = "";
+        try(java.io.BufferedReader br = java.nio.file.Files.newBufferedReader(path))
+        {
+            //read all line one by one until i > randomNumber or EOF(end-of-file) was reached 
+            int i = 0;
+            int max = randomNumber();
+            System.out.println("max = " + max);
+            while(!((str = br.readLine()) != null) || i < max) i++;
+        }
+        catch(java.io.IOException e)
+        {
+            System.err.println("error: " + e.getMessage());
+        }
+
+        return str; // return the one last line read from file
+    }
+
+//--------------------------------------------------------------------------
+
+    public static boolean askToRetry()
+    {
+        java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
+        char answer;
+
+        System.out.println("Do you want to retry: ");
+        do
+        {
+            System.out.println("o/N");
+            answer = sc.nextLine().charAt(0);
+        }while(answer != 'o' && answer != 'N' && answer != 'n');
+
+        return answer == 'o';
+    }
+
+//==== END STATIC METHODS
+//--------------------------------------------------------------------------
+
 /**
- * initialise the word found as '*' (length = hiddenWord.length)
+ * initialise the word found as '*' (with length = hiddenWord.length)
  * 
  * @author Heriniaina
  */
@@ -219,6 +309,26 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+    public void askForHiddenWord()
+    {
+        java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
+
+        System.out.println("Choose the hidden word: ");
+        setHiddenWord(sc.nextLine());
+    }
+
+//--------------------------------------------------------------------------
+
+    public void askForCharacter()
+    {
+        java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
+
+        System.out.println("Choose one character: ");
+        setCharacterEntry(sc.nextLine().charAt(0));
+    }
+
+//--------------------------------------------------------------------------
+
     public void startGame()
     {
         askForPlayerNumber();
@@ -226,7 +336,10 @@ public class Pendu
         if(com.pendu.enumeration.Player.ONE.equals(this.player)) startOnePlayer();
         else startTwoPlayer();
 
-        
+        this.initialiseFoundWord();
+        this.askForCharacter();
+        this.changeFoundWord();
+
     }
 
 //--------------------------------------------------------------------------
@@ -235,8 +348,11 @@ public class Pendu
     {
         // show introduction
         // pick a hidden word from appropriate file
+        this.setHiddenWord(pickWord());
         // clean terminal
         // 
+
+        
     }
 
 //--------------------------------------------------------------------------
@@ -245,6 +361,9 @@ public class Pendu
     {
         // show introduction
         // ask for hidden word
+        this.askForHiddenWord();
         // clean terminal
     }
+
+    
 }

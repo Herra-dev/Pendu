@@ -2,6 +2,8 @@ public class App
 {
     public static void main(String[] args)
     {
-        System.out.println("hello world"); 
+        com.pendu.Pendu p = new com.pendu.Pendu();
+
+        p.startGame();
     }
 }
