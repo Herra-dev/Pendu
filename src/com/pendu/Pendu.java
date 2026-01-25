@@ -24,9 +24,10 @@ public class Pendu
 //===   GETTERS
 
 /**
+ * return the hidden current word
+ * 
  * @return String
  * 
- * return the hidden current word
  * @author Heriniaina
  */
     public String getHiddenWord()
@@ -37,9 +38,10 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
+ * return the found word
+ * 
  * @return String
  * 
- * return the found word
  * @author Heriniaina
  */
     public String getFoundWord()
@@ -50,9 +52,10 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
+ * return the character enter by user
+ * 
  * @return char
  * 
- * return the character enter by user
  * @author Heriniaina
  */
     public char getCharacterEntry()
@@ -63,9 +66,10 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
+ * return the number of player
+ * 
  * @return char
  * 
- * return the number of player
  * @author Heriniaina
  */
     public com.pendu.enumeration.Player getPlayer()
@@ -75,6 +79,13 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+/**
+ * return the actual path to the file where the hidden word is picked
+ * 
+ * @return java.nio.file.Path
+ *  
+ * @author Heriniaina
+ */
     public java.nio.file.Path getPath()
     {
         return path;
@@ -84,9 +95,10 @@ public class Pendu
 //=== SETTERS
 
 /**
+ * set the property hiddenWord into p_hiddenWord
+ * 
  * @param p_hiddenWord: String
  * 
- * set the property hiddenWord into p_hiddenWord
  * @author Heriniaina
  */
     public void setHiddenWord(String p_hiddenWord)
@@ -97,9 +109,10 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
+ * set the property foundWord into p_hiddenWord
+ * 
  * @param p_foundWord: String
  * 
- * set the property foundWord into p_hiddenWord
  * @author Heriniaina
  */
     public void setFoundWord(String p_foundWord)
@@ -110,9 +123,10 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
+ * set the property characterEntry into p_characterEntry
+ * 
  * @param p_characterEntry: char
  * 
- * set the property characterEntry into p_characterEntry
  * @author Heriniaina
  */
     public void setCharacterEntry(char p_characterEntry)
@@ -122,6 +136,13 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+/**
+ * set the property player into p_player
+ * 
+ * @param p_Player: com.pendu.enumeration.Player
+ * 
+ * @author Heriniaina
+ */
     public void setPlayer(com.pendu.enumeration.Player p_Player)
     {
         this.player = p_Player;
@@ -129,6 +150,13 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+/**
+ * set the property path into p_path
+ * 
+ * @param p_path: java.nio.file.Path
+ * 
+ * @author Heriniaina
+ */
     public void setPath(java.nio.file.Path p_path)
     {
         path = p_path;
@@ -137,16 +165,29 @@ public class Pendu
 //--------------------------------------------------------------------------
 //==== STATIC METHODS
 
+/**
+ * return one random number between 0 and (the number of word available in the file - 1)
+ * 
+ * @return int
+ * 
+ * @author Heriniaina
+ */
     public static int randomNumber()
     {
         java.util.Random rand = new java.util.Random();
-
-        //return a random number between 0 and (the number of word available in the file - 1)
         return rand.nextInt(numberOfWords());
     }
 
 //--------------------------------------------------------------------------
 
+/**
+ * return the number of word in the file in the directory path
+ * if the file doesn't exist return 0
+ *  
+ * @return int
+ * 
+ * @author Heriniaina
+ */
     public static int numberOfWords()
     {
         // if the file in the URI path doesn't exists, return 0
@@ -170,9 +211,18 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+/**
+ * pick one word from the file in directory path
+ * if the file doesn't exist return "pendu" as hidden word
+ * 
+ * @return String
+ * 
+ * @author Heriniaina
+ */
     @SuppressWarnings("empty-statement")
     public static String pickWord()
     {
+        //if the file doesn't exist return "pendu"
         if(!java.nio.file.Files.exists(path)) return "pendu"; 
 
         String str = "";
@@ -194,6 +244,13 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+/**
+ * ask user if he/she want to retry
+ * 
+ * @return boolean
+ * 
+ * @author Heriniaina
+ */
     public static boolean askToRetry()
     {
         java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
@@ -204,7 +261,7 @@ public class Pendu
         {
             System.out.println("o/N");
             answer = sc.nextLine().charAt(0);
-        }while(answer != 'o' && answer != 'N' && answer != 'n');
+        }while(answer != 'o' && answer != 'N' && answer != 'n'); // While the user's response is different of 'o'/'n' or 'N', reask him/her
 
         return answer == 'o';
     }
@@ -229,7 +286,9 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
- * @return true if the hiddenWord is equals to foundWord, otherwise returns false
+ * returns true if the hiddenWord is equals to foundWord, otherwise returns false
+ * 
+ * @return boolean
  * 
  * @author Heriniaina
  */
@@ -241,7 +300,9 @@ public class Pendu
 //--------------------------------------------------------------------------
     
 /**
- * @return true if the hiddenWord contains the character enter by user, otherwise returns false
+ * returns true if the hiddenWord contains the character enter by user, otherwise returns false
+ * 
+ * @return boolean 
  * 
  * @author Heriniaina
  */
@@ -286,6 +347,12 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+/**
+ * ask user if he/she is - alone: Pendu will search for the hidden word
+ * or - not alone: player one will set the hidden word, the another one will try to guess it
+ * 
+ * @author Heriniaina
+ */
     public void askForPlayerNumber()
     {
         java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
@@ -309,6 +376,12 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+/**
+ * if user are not alone: (TWO players)
+ * ask one of them to set the hidden word
+ * 
+ * @author Heriniaina
+ */
     public void askForHiddenWord()
     {
         java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
@@ -319,16 +392,37 @@ public class Pendu
 
 //--------------------------------------------------------------------------
 
+/**
+ * ask user one character
+ * 
+ * @author Heriniaina
+ */
     public void askForCharacter()
     {
         java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
 
-        System.out.println("Choose one character: ");
-        setCharacterEntry(sc.nextLine().charAt(0));
+        try
+        {
+            System.out.println("Choose one character: ");
+            setCharacterEntry(sc.nextLine().charAt(0));
+        }
+        catch(java.lang.StringIndexOutOfBoundsException e)
+        {
+            this._askForCharacter();
+        }
+    }
+    public final void _askForCharacter()
+    {
+        this.askForCharacter();
     }
 
 //--------------------------------------------------------------------------
 
+/**
+ * start game
+ * 
+ * @author Heriniaina
+ */
     public void startGame()
     {
         askForPlayerNumber();
@@ -339,24 +433,32 @@ public class Pendu
         this.initialiseFoundWord();
         this.askForCharacter();
         this.changeFoundWord();
-
     }
 
 //--------------------------------------------------------------------------
 
+/**
+ * if user asked to play the one player's game
+ * Pendu will search for hidden file
+ * 
+ * @author Heriniaina
+ */
     public void startOnePlayer()
     {
         // show introduction
         // pick a hidden word from appropriate file
         this.setHiddenWord(pickWord());
         // clean terminal
-        // 
-
-        
     }
 
 //--------------------------------------------------------------------------
 
+/**
+ * if user asked to play the two player's game
+ * one will set hidden file
+ * 
+ * @author Heriniaina
+ */
     public void startTwoPlayer()
     {
         // show introduction
@@ -364,6 +466,4 @@ public class Pendu
         this.askForHiddenWord();
         // clean terminal
     }
-
-    
 }
