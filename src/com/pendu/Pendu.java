@@ -7,6 +7,7 @@ public class Pendu
     protected char characterEntry;
     protected com.pendu.enumeration.Player player = com.pendu.enumeration.Player.ONE;
     protected static java.nio.file.Path path = java.nio.file.Paths.get("../assets/files/France");
+    protected int life = 0;
 
 /**
  * default contructor
@@ -91,6 +92,19 @@ public class Pendu
         return path;
     }
 
+//--------------------------------------------------------------------------
+
+/**
+ * return the user's life
+ * 
+ * @return int
+ * @author Heriniaina
+ */
+    public int getLife()
+    {
+        return this.life;
+    }
+
 //==================================================================
 //=== SETTERS
 
@@ -160,6 +174,20 @@ public class Pendu
     public void setPath(java.nio.file.Path p_path)
     {
         path = p_path;
+    }
+
+//--------------------------------------------------------------------------
+
+/**
+ * set the property life into p_life
+ * 
+ * @param p_life: int
+ * 
+ * @author Heriniaina
+ */
+    public void setLife(int p_life)
+    {
+        this.life = p_life;
     }
 
 //--------------------------------------------------------------------------
@@ -382,12 +410,12 @@ public class Pendu
  * 
  * @author Heriniaina
  */
-    public void askForHiddenWord()
+    public String askForHiddenWord()
     {
         java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
 
         System.out.println("Choose the hidden word: ");
-        setHiddenWord(sc.nextLine());
+        return sc.nextLine();
     }
 
 //--------------------------------------------------------------------------
@@ -419,7 +447,14 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
- * start game
+ * start game:
+ * - first: ask user the number of player
+ * - second: pick the hidden word from file for one player, ask for hidden word if two player
+ * - third: count user's life - initialize the word found as '*' with length equals to hidden word length
+ * - fourth: show user the hidden word's length
+ * - fifth: ask user one character
+ * - sixth: change the word found
+ * - seventh: repeat--> fifth and sixth while user doesn't find the hidden word or user's life is > 0
  * 
  * @author Heriniaina
  */
@@ -430,9 +465,22 @@ public class Pendu
         if(com.pendu.enumeration.Player.ONE.equals(this.player)) startOnePlayer();
         else startTwoPlayer();
 
+        this.countUsersMaxLife();
         this.initialiseFoundWord();
-        this.askForCharacter();
-        this.changeFoundWord();
+        this.describeHiddenWord();
+        
+        do
+        {
+            System.out.println("found word: " + this.getFoundWord());
+            System.out.println("You have: " + this.life + " life");
+            this.askForCharacter();
+            this.changeFoundWord();
+            this.countUsersLife();
+        }while(!this.test() && this.life > 0);
+
+        this.showResult();
+
+        if(askToRetry()) startGame(); // restart game if user want
     }
 
 //--------------------------------------------------------------------------
@@ -463,7 +511,108 @@ public class Pendu
     {
         // show introduction
         // ask for hidden word
-        this.askForHiddenWord();
+        this.setHiddenWord(askForHiddenWord());
         // clean terminal
     }
+
+//--------------------------------------------------------------------------
+
+/**
+ * return the length of the hidden word
+ * 
+ * @return int
+ * @author Heriniaina
+ */
+    public int hiddenWordLenght()
+    {
+        return this.getHiddenWord().length();
+    }
+
+//--------------------------------------------------------------------------
+
+/**
+ * Show the hidden word lenght
+ * 
+ * @author Heriniaina
+ */
+    public void describeHiddenWord()
+    {
+        System.out.println("The hidden word has : " + this.hiddenWordLenght() + " characters");
+    }
+
+//--------------------------------------------------------------------------
+
+/**
+ * count user's max life according to hidden word length
+ * 
+ * @author Heriniaina
+ */
+    public void countUsersMaxLife()
+    {
+        setLife(this.getHiddenWord().length() + 10);
+    }
+
+//--------------------------------------------------------------------------
+
+/**
+ * after entering a character, this function decrement user's life 
+ * if the hidden word doen't contains the character enter
+ * 
+ * @author Heriniaina
+ */
+    public void countUsersLife()
+    {
+        if(isHiddenWordContainsCharEntry())
+        {
+            setLife(this.getLife());
+            return;
+        }    
+        setLife(this.getLife() - 1);
+    }
+
+//--------------------------------------------------------------------------
+
+/**
+ * show the game result
+ * 
+ * @author Heriniaina
+ */
+    public void showResult()
+    {
+        if(test())
+        {
+            System.out.println("Congratulation, you found the hidden word: " + this.getFoundWord());
+        }
+        else
+        {
+            System.out.println("the hidden word is: " + this.getHiddenWord() + "\nyou found: " + this.getFoundWord());
+            System.out.println("You have: " + this.characterFound() + "/" + this.getHiddenWord().length());
+        }
+    }
+
+//--------------------------------------------------------------------------
+
+/**
+ * returns the number of character founds
+ * 
+ * @return int
+ * @author Heriniaina
+ */
+    public int characterFound()
+    {
+        int i = 0;
+        for(int j = 0; j < this.getHiddenWord().length(); j++)
+            if(this.getHiddenWord().charAt(j) == this.getFoundWord().charAt(j))
+                i++;
+        return i;
+    }
+
+//--------------------------------------------------------------------------
+
+//list available language - put them into a collection (list)
+    public void listAvailableLanguage()
+    {
+
+    }
 }
+
