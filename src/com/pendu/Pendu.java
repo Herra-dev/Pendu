@@ -6,8 +6,9 @@ public class Pendu
     protected String foundWord;
     protected char characterEntry;
     protected com.pendu.enumeration.Player player = com.pendu.enumeration.Player.ONE;
-    protected static java.nio.file.Path path = java.nio.file.Paths.get("../assets/files/France");
+    protected static java.nio.file.Path path = java.nio.file.Paths.get("../assets/files/");
     protected int life = 0;
+    protected java.util.LinkedList<java.nio.file.Path> availableLanguageList = new java.util.LinkedList<>();
 
 /**
  * default contructor
@@ -188,6 +189,13 @@ public class Pendu
     public void setLife(int p_life)
     {
         this.life = p_life;
+    }
+
+//--------------------------------------------------------------------------
+
+    public void addToAvailableLanguage(java.nio.file.Path p_path)
+    {
+        this.availableLanguageList.addLast(p_path);
     }
 
 //--------------------------------------------------------------------------
@@ -610,9 +618,39 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 //list available language - put them into a collection (list)
+//using Files
     public void listAvailableLanguage()
     {
-
+        try(java.nio.file.DirectoryStream<java.nio.file.Path> listing = java.nio.file.Files.newDirectoryStream(this.getPath()))
+        {
+            for(java.nio.file.Path name: listing)
+            {
+                this.addToAvailableLanguage(name);
+            }
+                
+        }
+        catch(java.io.IOException e)
+        {
+            System.err.println("error: " + e.getMessage());
+        }           
     }
+
+//--------------------------------------------------------------------------
+
+    public void askForLanguage()
+    {
+        java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
+
+        System.out.println("choose language: ");
+
+        for(java.nio.file.Path p : this.availableLanguageList)
+            System.out.println("\t\t" + p.getFileName());
+        
+        this.setPath(java.nio.file.Paths.get(this.getPath().toString() + "/" + sc.nextLine()));
+
+        System.out.println("path: " + this.getPath().toString());
+        System.out.println("exist? " + java.nio.file.Files.exists(this.getPath()));
+    }
+
 }
 
