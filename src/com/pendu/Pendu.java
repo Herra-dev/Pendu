@@ -199,6 +199,7 @@ public class Pendu
     }
 
 //--------------------------------------------------------------------------
+
 //==== STATIC METHODS
 
 /**
@@ -651,6 +652,5 @@ public class Pendu
         System.out.println("path: " + this.getPath().toString());
         System.out.println("exist? " + java.nio.file.Files.exists(this.getPath()));
     }
-
 }
 
