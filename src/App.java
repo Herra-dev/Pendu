@@ -4,6 +4,9 @@ public class App
     {
         com.pendu.Pendu p = new com.pendu.Pendu();
 
-        p.startGame();
+        //p.startGame();
+
+        p.listAvailableLanguage();
+        p.askForLanguage();
     }
 }
