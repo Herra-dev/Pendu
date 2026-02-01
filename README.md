@@ -3,6 +3,14 @@
 
 ***Pendu is a simple console game written in Java:***
 
-'''
-    '#FF0000 In this game you can':
-'''
+1. In this game you can:
+    _ [Adding new language](#add-new-language)
+    _ [Play with your friend](#play-with-your-friend)
+    
+
+### Add new Language
+world hello
+
+
+### Play with your friend
+hello world
