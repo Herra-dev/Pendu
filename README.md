@@ -28,7 +28,7 @@
 ## How to compile and execute Pendu:
 - **First**, you must have: openjdk on your computer, to install it:
     - ***<ins>Windows</ins>***: you can download it [here](https://learn.microsoft.com/fr-fr/java/openjdk/install?tabs=exe%2Chomebrew%2Cubuntu), after install it
-    - ***<ins>Linux</ins>***: 
+    - ***<ins>Linux</ins>***: (xx -> version you want to install)
         - *<ins>Debian/Ubuntu/Mint</ins>*: 
             - sudo apt update
             - sudo apt install openjdk-xx-jdk
