@@ -26,22 +26,22 @@
     git clone https://github.com/Herra-dev/Pendu directory/
 
 ## How to compile and execute Pendu:
-- First, you must have: openjdk on your computer, to install it:
-    - Windows: you can download it [here](https://learn.microsoft.com/fr-fr/java/openjdk/install?tabs=exe%2Chomebrew%2Cubuntu), after install it
-    - Linux: 
-        - Debian/Ubuntu/Mint: 
+- **First**, you must have: openjdk on your computer, to install it:
+    - ***<ins>Windows</ins>***: you can download it [here](https://learn.microsoft.com/fr-fr/java/openjdk/install?tabs=exe%2Chomebrew%2Cubuntu), after install it
+    - ***<ins>Linux</ins>***: 
+        - *<ins>Debian/Ubuntu/Mint</ins>*: 
             - sudo apt update
-            - sudo apt install openjdk-xx-jdk  *#sudo apt install openjdk-17-jdk for openjdk 17 for example*
-        - Fedora/CentOS/AlmaLinux:
+            - sudo apt install openjdk-xx-jdk
+        - *<ins>Fedora/CentOS/AlmaLinux</ins>*:
             - sudo dnf install java-xx-openjdk-devel
-        - ArchLinux/Manjaro:
+        - *<ins>ArchLinux/Manjaro</ins>*:
             - sudo pacman -S jdkxx-openjdk
-- After, to compile **java** program:
+- **After**, to compile **java** program:
     - javac Main.java -d classFolder 
     *#example for [PENDU](https://github.com/Herra-dev/Pendu):*
         - go to <ins>src</ins> directory
         - execute: javac *.java -d ../class (#this code compile all files with .java extension, generate classes files and put them into directory ../class)
-- Finally, execute the output file:
+- **Finally**, execute the output file:
     - java Main (Pay attention with this command: java + Main ***:point_right: no extension .class :point_left:*** (<ins>Main</ins> is the class name containing the method main()))
     
 ## How to download Pendu:
