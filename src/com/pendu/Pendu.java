@@ -11,7 +11,7 @@ public class Pendu
     protected java.util.LinkedList<java.nio.file.Path> availableLanguageList = new java.util.LinkedList<>();
 
 /**
- * default contructor
+ * Constructor
  * 
  * @author Heriniaina
  */
@@ -422,9 +422,16 @@ public class Pendu
     public String askForHiddenWord()
     {
         java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
+        String str = "";
 
         System.out.println("Choose the hidden word: ");
-        return sc.nextLine();
+        
+        do
+        {
+            str = sc.nextLine();
+        }while(str.isEmpty()); // user must enter at least one character
+
+        return str;
     }
 
 //--------------------------------------------------------------------------
@@ -469,6 +476,14 @@ public class Pendu
  */
     public void startGame()
     {
+        // if user want to restart game:
+        // the language directory will surelly setted to "../assets/files/choosen_language"
+        // if Pendu reask for language, path will be setted to "../assets/files/previous_choosen_language/choosen_language"
+        // so before starting game, Pendu must set the Path into "../assets/files"
+        this.setPath(java.nio.file.Paths.get("../assets/files"));
+        this.availableLanguageList.clear(); // remove all previous objects from availableLanguageList
+
+        introduction();
         askForPlayerNumber();
 
         if(com.pendu.enumeration.Player.ONE.equals(this.player)) startOnePlayer();
@@ -647,10 +662,44 @@ public class Pendu
         for(java.nio.file.Path p : this.availableLanguageList)
             System.out.println("\t\t" + p.getFileName());
         
-        this.setPath(java.nio.file.Paths.get(this.getPath().toString() + "/" + sc.nextLine()));
+        java.nio.file.Path choosenPath = null;
 
-        System.out.println("path: " + this.getPath().toString());
-        System.out.println("exist? " + java.nio.file.Files.exists(this.getPath()));
+        //do while user enter unavailable Language
+        do
+        {
+            String str = sc.nextLine();
+            choosenPath = java.nio.file.Paths.get(this.getPath().toString() + "/" + str);
+            if(this.availableLanguageList.contains(choosenPath)) //if user enter available Language, break
+                break;
+            
+            System.out.println("Language: " + str + " not available");
+        }while(true);
+        
+        this.setPath(choosenPath); // Setting the actual path into choosenPath(java.nio.file.Path)
+    }
+
+//--------------------------------------------------------------------------
+
+/**
+ * Introduction
+ * 
+ * @author Heriniaina
+ */
+    public static void introduction()
+    {
+        System.out.println("""
+                                    _ _ _ _                               _
+                                  /   _ _   |                           /  /
+                                 /   /   |  |                          /  /
+                                /   /    /  /_ _ _    _  _ _ _   _ _ _/  / _      _ 
+                               /   /_ _ /  /    _  |/  /      |/   _    /   /   /  /
+                              /   _ _ _ _ /   / _/ /    _     /  /  /  /   /   /  /
+                             /   /       /    _ _ /   /  /   /  /  /  /   /   /  /
+                            /   /       /   / _ _/   /  /   /  /_ /  /   | _ /  /
+                           / _ /       / _ _ _ _/ _ /  / _ /| _ _ _ /  _ _ _ _ /
+
+                           by Heriniaina - github: https://github.com/Herra-dev
+                            """);
     }
 }
 
