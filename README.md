@@ -1,7 +1,7 @@
 # [PENDU](https://github.com/Herra-dev/Pendu)
 ### by [Heriniaina RANDRIAMANANTSOA](https://github.com/Herra-dev)
 
-***![#FF0000]Pendu is a simple console game written in Java :+1: :***
+***<span style="color: #2ECC71;">Pendu is a simple console game written in Java :+1: :</span>***
 
 - [Add new language](#add-new-language)
 - [Play with your friend](#play-with-your-friend)
