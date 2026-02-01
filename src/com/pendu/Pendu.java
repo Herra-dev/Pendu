@@ -519,6 +519,7 @@ public class Pendu
     {
         // show introduction
         // pick a hidden word from appropriate file
+        this.askForLanguage();
         this.setHiddenWord(pickWord());
         // clean terminal
     }
@@ -656,6 +657,7 @@ public class Pendu
     public void askForLanguage()
     {
         java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
+        this.listAvailableLanguage();
 
         System.out.println("choose language: ");
 
