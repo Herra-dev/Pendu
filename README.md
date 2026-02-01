@@ -8,10 +8,10 @@
     - [Play with your friend](#play-with-your-friend)
     
 2. Some screenshots:
-    - ![Pendu introduction](https://github.com/Herra-dev/Pendu/assets/screenShots/Pendu0.png)
-    - ![User has selected ONE player](https://github.com/Herra-dev/Pendu/assets/screenShots/Pendu1.png)
-    - ![User failed](https://github.com/Herra-dev/Pendu/assets/screenShots/Pendu2Over.png) **and** ![User win](https://github.com/Herra-dev/Pendu/assets/screenShots/Pendu2Win.png)
-    - ![User has selected TWO player, one of them is invited to set the hidden word](https://github.com/Herra-dev/Pendu/assets/screenShots/PenduTwo0.png)
+    - ![Pendu introduction](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu0.png)
+    - ![User has selected ONE player](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu1.png)
+    - ![User failed](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu2Over.png) **and** ![User win](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu2Win.png)
+    - ![User has selected TWO player, one of them is invited to set the hidden word](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/PenduTwo0.png)
 
 ### Add new Language
 1. **To <ins>add new language</ins> in the game:**
