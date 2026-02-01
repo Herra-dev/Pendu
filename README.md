@@ -3,9 +3,13 @@
 
 ***Pendu is a simple console game written in Java:***
 
-- In this game you can:
-    - [Add new language](#add-new-language)
-    - [Play with your friend](#play-with-your-friend)
+- [Add new language](#add-new-language)
+- [Play with your friend](#play-with-your-friend)
+- [Clone Pendu](#how-to-clone-repository)
+- [Compilation and execution](#how-to-compile-and-execute-pendu)
+- [Download Pendu](#how-to-download-pendu)
+- [See few screenShots](#some-screenshots)
+>>>>>>> 7b77cc1 (Add initial content to README.md)
     
 ### Add new Language:
 - **To <ins>add new language</ins> in the game:**
@@ -41,11 +45,11 @@
 - Finally, execute the output file:
     - java Main (Pay attention with this command: java + Main ***no extension .class*** (<ins>Main</ins> is the class name containing the method main()))
     
-
 ### How to download Pendu:
+- ***Work In Progress***
 
-- Some screenshots:
-    - ![Pendu introduction](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu0.png)
-    - ![User has selected ONE player](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu1.png)
-    - ![User failed](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu2Over.png) **and** ![User win](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu2Win.png)
-    - ![User has selected TWO player, one of them is invited to set the hidden word](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/PenduTwo0.png)
+### Some screenshots:
+- ![Pendu introduction](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu0.png)
+- ![User has selected ONE player](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu1.png)
+- ![User failed](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu2Over.png) **and** ![User win](https://github.com/Herra-dev/Pendu/blob/main/assets/screenShots/Pendu2Win.png)
+>>>>>>> 7b77cc1 (Add initial content to README.md)
