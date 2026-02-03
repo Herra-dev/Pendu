@@ -1,7 +1,7 @@
 # [PENDU](https://github.com/Herra-dev/Pendu)
 ### by [Heriniaina RANDRIAMANANTSOA](https://github.com/Herra-dev)
 
-***<span style="color: #2ECC71;">Pendu is a simple console game written in Java :+1: :</span>***
+***Pendu is a simple console game written in Java :+1: :***
 
 - [Add new language](#add-new-language)
 - [Play with your friend](#play-with-your-friend)
@@ -12,13 +12,13 @@
     
 ## Add new Language:
 - **To <ins>add new language</ins> in the game:**
-    - Name your file language as you want
+    - Name your file language as you want as long as its a readable file:**if your file isn't readable, Pendu will set the hidden word as "pendu"**
     - Copy it to : directory/where/you/clone/game/assets/files/here or directory/where/you/decompressed/game/assets/files/here
-    - That's all
+    - That's all, Pendu 
 
 
 ## Play with your friend:
-- **To <ins>Play with your friend</ins>: *(One of you set the hidden word and the another one guess it)***
+- **To <ins>Play with your friend</ins>: *(One of you must set the hidden word and the another one guess it)***
     - When game start, choose **TWO** players
 
 ## How to clone repository:
@@ -27,22 +27,23 @@
 
 ## How to compile and execute Pendu:
 - **First**, you must have: openjdk on your computer, to install it:
-    - ***<ins>Windows</ins>***: you can download it [here](https://learn.microsoft.com/fr-fr/java/openjdk/install?tabs=exe%2Chomebrew%2Cubuntu), after install it
-    - ***<ins>Linux</ins>***: (xx -> version you want to install)
-        - *<ins>Debian/Ubuntu/Mint</ins>*: 
+    - ***<ins>Windows</ins>***: you can be downloaded [here](https://learn.microsoft.com/fr-fr/java/openjdk/install?tabs=exe%2Chomebrew%2Cubuntu), after install it
+    - ***<ins>Linux</ins>***: (change xx with the version you want to install)
+        - *<ins>Debian/Ubuntu/Mint/..</ins>*: 
             - sudo apt update
             - sudo apt install openjdk-xx-jdk
-        - *<ins>Fedora/CentOS/AlmaLinux</ins>*:
+        - *<ins>Fedora/CentOS/AlmaLinux/..</ins>*:
             - sudo dnf install java-xx-openjdk-devel
-        - *<ins>ArchLinux/Manjaro</ins>*:
+        - *<ins>ArchLinux/Manjaro/..</ins>*:
             - sudo pacman -S jdkxx-openjdk
 - **After**, to compile **java** program:
-    - javac Main.java -d classFolder 
+    - javac Name.java -d classFolder 
     *#example for [PENDU](https://github.com/Herra-dev/Pendu):*
-        - go to <ins>src</ins> directory
-        - execute: javac *.java -d ../class (#this code compile all files with .java extension, generate classes files and put them into directory ../class)
+        - go to the directory <ins>src</ins>
+        - execute: javac *.java -d directory/you/want/java/to/put/your/class/file (#this code compile all files with .java extension, generate classes files and put them into directory -> ***directory/you/want/java/to/put/your/class/file***)
 - **Finally**, execute the output file:
-    - java Main (Pay attention with this command: java + Main ***:point_right: no extension .class :point_left:*** (<ins>Main</ins> is the class name containing the method main()))
+    - go to: directory/where/have/put/your/class/file
+    - execute: java App (Pay attention with this command: java + space + App :point_right: ***no extension .class*** :point_left: (<ins**>**App**</ins> is the class name containing the method main()))
     
 ## How to download Pendu:
 - ***Work In Progress***

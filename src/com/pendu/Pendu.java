@@ -227,8 +227,8 @@ public class Pendu
  */
     public static int numberOfWords()
     {
-        // if the file in the URI path doesn't exists, return 0
-        if(!java.nio.file.Files.exists(path)) return 0; 
+        // if the file in the URI path doesn't exists, return 1
+        if(!java.nio.file.Files.exists(path)) return 1; 
 
         int number = 0;
         
@@ -243,7 +243,8 @@ public class Pendu
             System.err.println("error: " + e.getMessage());
         }
 
-        return number; // return the number of line read
+        System.out.println("number of word: " + number);
+        return (number > 0) ? number : number+1; //if number is superior of 0, returns number, otherwise returns number + 1
     }
 
 //--------------------------------------------------------------------------
@@ -267,14 +268,27 @@ public class Pendu
         {
             //read all line one by one until i > randomNumber or EOF(end-of-file) was reached 
             int i = 0;
+            
             int max = randomNumber();
             System.out.println("max = " + max);
-            while(!((str = br.readLine()) != null) || i < max) i++;
+            do{
+                i++;
+                str = br.readLine();
+            }while((i-1) < max);
+
+            if(str == null || str.isEmpty()) // if an error was occured during reading and str is null # or # str is empty
+                str = "pendu";               // set str into "pendu"
+
+            System.out.println("Random number picked = " + max);
+            System.out.println("Word picked: " + str);
         }
         catch(java.io.IOException e)
         {
             System.err.println("error: " + e.getMessage());
+            str = "pendu";
         }
+
+        
 
         return str; // return the one last line read from file
     }
@@ -517,11 +531,8 @@ public class Pendu
  */
     public void startOnePlayer()
     {
-        // show introduction
-        // pick a hidden word from appropriate file
         this.askForLanguage();
         this.setHiddenWord(pickWord());
-        // clean terminal
     }
 
 //--------------------------------------------------------------------------
@@ -534,10 +545,7 @@ public class Pendu
  */
     public void startTwoPlayer()
     {
-        // show introduction
-        // ask for hidden word
         this.setHiddenWord(askForHiddenWord());
-        // clean terminal
     }
 
 //--------------------------------------------------------------------------
@@ -548,7 +556,7 @@ public class Pendu
  * @return int
  * @author Heriniaina
  */
-    public int hiddenWordLenght()
+    public int hiddenWordLength()
     {
         return this.getHiddenWord().length();
     }
@@ -562,7 +570,7 @@ public class Pendu
  */
     public void describeHiddenWord()
     {
-        System.out.println("The hidden word has : " + this.hiddenWordLenght() + " characters");
+        System.out.println("The hidden word has : " + this.hiddenWordLength() + " characters");
     }
 
 //--------------------------------------------------------------------------
