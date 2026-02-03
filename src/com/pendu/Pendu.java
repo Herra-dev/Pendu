@@ -288,7 +288,6 @@ public class Pendu
             str = "pendu";
         }
 
-        
         return str; // return the one last line read from file
     }
 
