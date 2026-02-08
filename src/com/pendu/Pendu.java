@@ -453,7 +453,6 @@ public class Pendu
     public void askForCharacter()
     {
         java.util.Scanner sc = new java.util.Scanner(java.lang.System.in);
-
         try
         {
             System.out.println("Choose one character: ");
@@ -513,7 +512,7 @@ public class Pendu
 
         this.showResult();
 
-        if(askToRetry()) startGame(); // restart game if user want
+        if(askToRetry()){ clearScreen(); startGame();} // clear screen, restart game if user want
     }
 
 //--------------------------------------------------------------------------
@@ -527,6 +526,7 @@ public class Pendu
     public void startOnePlayer()
     {
         this.askForLanguage();
+        clearScreen();
         this.setHiddenWord(pickWord());
     }
 
@@ -541,6 +541,7 @@ public class Pendu
     public void startTwoPlayer()
     {
         this.setHiddenWord(askForHiddenWord());
+        clearScreen();
     }
 
 //--------------------------------------------------------------------------
@@ -707,13 +708,30 @@ public class Pendu
                             """);
     }
 
-    public static int divide(int a, int b)
-    {
-        System.out.println("a = " + a);
-        if(b == 0)
-            throw new java.lang.ArithmeticException();
+//--------------------------------------------------------------------------
 
-        return a/b;
+/**
+ * function used to clear terminal
+ * 
+ * @author Heriniaina
+ */
+    public static void clearScreen()
+    {
+        try
+        {
+            if(java.lang.System.getProperty("os.name").startsWith("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+        }
+        catch(java.lang.SecurityException |
+                java.lang.NullPointerException |
+                    java.lang.IllegalArgumentException |
+                        java.io.IOException |
+                            java.lang.InterruptedException e)
+        {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 }
 
