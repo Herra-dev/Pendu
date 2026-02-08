@@ -278,9 +278,6 @@ public class Pendu
 
             if(str == null || str.isEmpty()) // if an error was occured during reading and str is null # or # str is empty
                 str = "pendu";               // set str into "pendu"
-
-            System.out.println("Random number picked = " + max);
-            System.out.println("Word picked: " + str);
         }
         catch(java.io.IOException e)
         {
@@ -708,6 +705,15 @@ public class Pendu
 
                            by Heriniaina - github: https://github.com/Herra-dev
                             """);
+    }
+
+    public static int divide(int a, int b)
+    {
+        System.out.println("a = " + a);
+        if(b == 0)
+            throw new java.lang.ArithmeticException();
+
+        return a/b;
     }
 }
 

@@ -22,7 +22,7 @@
     - When game start, choose **TWO** players
 
 ## How to clone repository:
-- to clone Pendu execute this command: 
+- To clone Pendu execute this command: 
     git clone https://github.com/Herra-dev/Pendu directory/
 
 ## How to compile and execute Pendu:
