@@ -49,4 +49,10 @@ public class PenduTest
         // test if the object returned is a String
         assertEquals(new java.lang.String().getClass(), p.getFoundWord().getClass(), "Found word must be a String");
     }
+
+    @Test 
+    public void _test_getCharacterEntry()
+    {
+        
+    }
 }
