@@ -4,9 +4,13 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class PenduTest
 {
+    protected com.pendu.Pendu p = null;
+
     @BeforeAll
     public static void setUpBeforeClass() 
     {
@@ -22,6 +26,7 @@ public class PenduTest
     @BeforeEach
     public void setUp() 
     {
+        p = new com.pendu.Pendu();
         System.out.println("before each test");
     }
 
@@ -32,14 +37,16 @@ public class PenduTest
     }
 
     @Test
-    public void testMe1()
+    public void _test_getHiddenWord()
     {
-        System.out.println("test 1");
+        // test if the object returned is a String
+        assertEquals(new java.lang.String().getClass(), p.getHiddenWord().getClass(), "Hidden word must be a String");
     }
 
     @Test
-    public void testMe2()
+    public void _test_getFoundWord()
     {
-        System.out.println("test 2");
+        // test if the object returned is a String
+        assertEquals(new java.lang.String().getClass(), p.getFoundWord().getClass(), "Found word must be a String");
     }
 }

@@ -733,5 +733,14 @@ public class Pendu
             System.err.println("Error: " + e.getMessage());
         }
     }
+
+    public static int add(int a, int b)
+    {
+        if(b == 0) throw new ArithmeticException();
+
+        return a + b;
+    }
+
+    
 }
 
