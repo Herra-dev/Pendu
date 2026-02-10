@@ -130,7 +130,14 @@ public class PenduTest
         assertEquals(language, p.getAvailableLanguageList());
 
         language.add(java.nio.file.Paths.get("../ressources/files/France"));
-        language.add(java.nio.file.Paths.get("../ressources/files/autre"));
+        language.add(java.nio.file.Paths.get("../ressources/files/another"));
+        p.setAvailableLanguageList(language);
+
+        assertEquals(language.getClass(), p.getAvailableLanguageList().getClass());
+        assertEquals(language, p.getAvailableLanguageList());
+
+        language.add(java.nio.file.Paths.get("../ressources/files/France"));
+        language.add(java.nio.file.Paths.get("../ressources/files/anotherOne"));
         p.setAvailableLanguageList(language);
 
         assertEquals(language.getClass(), p.getAvailableLanguageList().getClass());
