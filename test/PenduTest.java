@@ -39,20 +39,60 @@ public class PenduTest
     @Test
     public void _test_getHiddenWord()
     {
-        // test if the object returned is a String
+        String hiddenWordTest = "pendu";
+        p.setHiddenWord(hiddenWordTest);
+        
         assertEquals(new java.lang.String().getClass(), p.getHiddenWord().getClass(), "Hidden word must be a String");
+        assertEquals(hiddenWordTest, p.getHiddenWord());
     }
 
     @Test
     public void _test_getFoundWord()
     {
-        // test if the object returned is a String
+        String FoundWordTest = "pendu";
+        p.setFoundWord(FoundWordTest);
+        
         assertEquals(new java.lang.String().getClass(), p.getFoundWord().getClass(), "Found word must be a String");
+        assertEquals(FoundWordTest, p.getFoundWord());
     }
 
     @Test 
     public void _test_getCharacterEntry()
     {
-        
+        char characterEntryTest = '@';
+        p.setCharacterEntry(characterEntryTest);
+        assertEquals(characterEntryTest, p.getCharacterEntry());
+
+        characterEntryTest = '0';
+        p.setCharacterEntry(characterEntryTest);
+        assertEquals(characterEntryTest, p.getCharacterEntry());
+
+        characterEntryTest = '*';
+        p.setCharacterEntry(characterEntryTest);
+        assertEquals(characterEntryTest, p.getCharacterEntry());
+
+        characterEntryTest = 'å';
+        p.setCharacterEntry(characterEntryTest);
+        assertEquals(characterEntryTest, p.getCharacterEntry());
+
+        characterEntryTest = '€';
+        p.setCharacterEntry(characterEntryTest);
+        assertEquals(characterEntryTest, p.getCharacterEntry());
+
+        characterEntryTest = 'ü';
+        p.setCharacterEntry(characterEntryTest);
+        assertEquals(characterEntryTest, p.getCharacterEntry());
+    }
+
+    @Test
+    public void _test_getPlayer()
+    {
+        com.pendu.enumeration.Player player = com.pendu.enumeration.Player.ONE;
+        p.setPlayer(player);
+        assertEquals(player, p.getPlayer());
+
+        player = com.pendu.enumeration.Player.TWO;
+        p.setPlayer(player);
+        assertEquals(player, p.getPlayer());
     }
 }
