@@ -169,4 +169,17 @@ public class PenduTest
 
 //================================================================================
 
+    @Test
+    public void _test_addToAvailableLanguage()
+    {
+        int size = 0;
+        assertEquals(size, p.getAvailableLanguageList().size(), "available language 0");
+
+        p.addToAvailableLanguage(java.nio.file.Paths.get("../ressources/files/France"));
+        assertEquals(++size, p.getAvailableLanguageList().size(), "available language 1");
+
+        p.addToAvailableLanguage(java.nio.file.Paths.get("../ressources/files/France"));
+        assertEquals(++size, p.getAvailableLanguageList().size(), "available language 2");
+    }
+
 }
