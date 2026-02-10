@@ -14,27 +14,34 @@ public class PenduTest
     @BeforeAll
     public static void setUpBeforeClass() 
     {
-        System.out.println("before all");
+        
     }
     
+//================================================================================
+
     @AfterAll
     public static void tearDownAfterClass() 
     {
-        System.out.println("After all");
+
     }
+
+//================================================================================
 
     @BeforeEach
     public void setUp() 
     {
         p = new com.pendu.Pendu();
-        System.out.println("before each test");
     }
+
+//================================================================================
 
     @AfterEach
     public void tearDown()
     {
-        System.out.println("after each test");
+        
     }
+
+//================================================================================
 
     @Test
     public void _test_getHiddenWord()
@@ -46,6 +53,8 @@ public class PenduTest
         assertEquals(hiddenWordTest, p.getHiddenWord());
     }
 
+//================================================================================
+
     @Test
     public void _test_getFoundWord()
     {
@@ -55,6 +64,8 @@ public class PenduTest
         assertEquals(new java.lang.String().getClass(), p.getFoundWord().getClass(), "Found word must be a String");
         assertEquals(FoundWordTest, p.getFoundWord());
     }
+
+//================================================================================
 
     @Test 
     public void _test_getCharacterEntry()
@@ -84,6 +95,8 @@ public class PenduTest
         assertEquals(characterEntryTest, p.getCharacterEntry());
     }
 
+//================================================================================
+
     @Test
     public void _test_getPlayer()
     {
@@ -95,6 +108,8 @@ public class PenduTest
         p.setPlayer(player);
         assertEquals(player, p.getPlayer());
     }
+
+//================================================================================
 
     @Test
     public void _test_getPath()
@@ -110,6 +125,8 @@ public class PenduTest
         assertEquals(path, p.getPath());
     }
 
+//================================================================================
+
     @Test 
     public void _test_getLife()
     {
@@ -118,6 +135,8 @@ public class PenduTest
 
         assertEquals(life, p.getLife());
     }
+
+//================================================================================
 
     @Test
     public void _test_getAvailableLanguageList()
@@ -129,12 +148,16 @@ public class PenduTest
         assertEquals(language.getClass(), p.getAvailableLanguageList().getClass());
         assertEquals(language, p.getAvailableLanguageList());
 
+        //----------------------------------
+
         language.add(java.nio.file.Paths.get("../ressources/files/France"));
         language.add(java.nio.file.Paths.get("../ressources/files/another"));
         p.setAvailableLanguageList(language);
 
         assertEquals(language.getClass(), p.getAvailableLanguageList().getClass());
         assertEquals(language, p.getAvailableLanguageList());
+
+        //----------------------------------
 
         language.add(java.nio.file.Paths.get("../ressources/files/France"));
         language.add(java.nio.file.Paths.get("../ressources/files/anotherOne"));
@@ -143,4 +166,7 @@ public class PenduTest
         assertEquals(language.getClass(), p.getAvailableLanguageList().getClass());
         assertEquals(language, p.getAvailableLanguageList());
     }   
+
+//================================================================================
+
 }
