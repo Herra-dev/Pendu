@@ -26,7 +26,7 @@ public class Pendu
 //===   GETTERS
 
 /**
- * return the hidden current word
+ * returns the hidden current word
  * 
  * @return String
  * 
@@ -40,7 +40,7 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
- * return the found word
+ * returns the found word
  * 
  * @return String
  * 
@@ -54,7 +54,7 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
- * return the character enter by user
+ * returns the character enter by user
  * 
  * @return char
  * 
@@ -68,7 +68,7 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
- * return the number of player
+ * returns the number of player
  * 
  * @return char
  * 
@@ -82,7 +82,7 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
- * return the actual path to the file where the hidden word is picked
+ * returns the actual path to the file where the hidden word is picked
  * 
  * @return java.nio.file.Path
  *  
@@ -96,7 +96,7 @@ public class Pendu
 //--------------------------------------------------------------------------
 
 /**
- * return the user's life
+ * returns the user's life
  * 
  * @return int
  * @author Heriniaina
@@ -104,6 +104,19 @@ public class Pendu
     public int getLife()
     {
         return this.life;
+    }
+
+//--------------------------------------------------------------------------
+
+/**
+ * returns all available language
+ * 
+ * @return java.util.LinkedList<java.nio.file.Path>
+ * @author Heriniaina
+ */
+    public java.util.LinkedList<java.nio.file.Path> getAvailableLanguageList()
+    {
+        return this.availableLanguageList;
     }
 
 //==================================================================
@@ -189,6 +202,11 @@ public class Pendu
     public void setLife(int p_life)
     {
         this.life = p_life;
+    }
+
+    public void setAvailableLanguageList(java.util.LinkedList<java.nio.file.Path> list)
+    {
+        this.availableLanguageList = list;
     }
 
 //--------------------------------------------------------------------------

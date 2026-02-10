@@ -95,4 +95,45 @@ public class PenduTest
         p.setPlayer(player);
         assertEquals(player, p.getPlayer());
     }
+
+    @Test
+    public void _test_getPath()
+    {
+        java.nio.file.Path path = java.nio.file.Paths.get("../ressources/files/");
+        p.setPath(path);
+
+        assertEquals(path.getClass(), p.getPath().getClass());
+        assertEquals(path, p.getPath());
+
+        path = java.nio.file.Paths.get("../ressources/files/France");
+        p.setPath(path);
+        assertEquals(path, p.getPath());
+    }
+
+    @Test 
+    public void _test_getLife()
+    {
+        int life = 5;
+        p.setLife(life);
+
+        assertEquals(life, p.getLife());
+    }
+
+    @Test
+    public void _test_getAvailableLanguageList()
+    {
+        java.util.LinkedList<java.nio.file.Path> language = new java.util.LinkedList<>();
+        language.add(java.nio.file.Paths.get("../ressources/files/France"));
+        p.setAvailableLanguageList(language);
+
+        assertEquals(language.getClass(), p.getAvailableLanguageList().getClass());
+        assertEquals(language, p.getAvailableLanguageList());
+
+        language.add(java.nio.file.Paths.get("../ressources/files/France"));
+        language.add(java.nio.file.Paths.get("../ressources/files/autre"));
+        p.setAvailableLanguageList(language);
+
+        assertEquals(language.getClass(), p.getAvailableLanguageList().getClass());
+        assertEquals(language, p.getAvailableLanguageList());
+    }   
 }
